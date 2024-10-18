@@ -1,0 +1,156 @@
+/* Importerar Tailwinds basklasser, komponenter och utility-klasser */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Anpassad hover-effekt för ett kort */
+.card.hovered {
+  transform: translateY(
+    -20px
+  ); /* När ett kort är hovrat, flyttas det uppåt med 20px */
+}
+
+/* Standardteman */
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --background-color: #000000;
+  --text-color: #ffffff;
+}
+
+[data-theme="red"] {
+  --background-color: #ff0000;
+  --text-color: #ffffff;
+}
+
+[data-theme="green"] {
+  --background-color: #00ff00;
+  --text-color: #ffffff;
+}
+
+/* Applicera variablerna */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Stil för länkar med en animerad understrykning */
+.link-underline {
+  border-bottom-width: 0; /* Inget understruket med standard border */
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff); /* Skapar en osynlig och vit understrykningseffekt */
+  background-size: 0 4px; /* Startstorlek på bakgrunden (dvs. understrykningen) */
+  background-position: 0 100%; /* Understrykningen placeras längst ner i elementet */
+  background-repeat: no-repeat; /* Undvik att repetera understrykningen */
+  transition: background-size 0.5s ease-in-out; /* Animerar storleken på understrykningen över 0,5 sekunder */
+}
+
+/* Anpassad färg på understrykningen med en gradient */
+.link-underline-color {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(hsl(193, 55%, 60%), hsl(191, 55%, 82%)); /* Gradientfärger för animerad understrykning */
+}
+
+/* Hover-effekt för länken där understrykningen expanderar */
+.link-underline:hover {
+  background-size: 100% 4px; /* När man hovrar expanderar understrykningen över hela länken */
+  background-position: 0 100%; /* Förblir längst ner */
+}
+
+/* Anpassar Tailwinds basklasser genom att skapa en :root block med CSS-variabler */
+@layer base {
+  :root {
+    /* Definierar färgvariabler i HSL-format för bättre kontroll och förståelse */
+    --color-secondary: 208 7% 46%;
+
+    --color-warning-400: 33 93% 60%;
+    --color-warning-500: 33 93% 50%;
+    --color-warning-700: 33 100% 45%;
+
+    --color-danger-400: 355 97% 60%;
+    --color-danger-500: 355 97% 50%;
+
+    --color-blue-400: 219 100% 70%;
+    --color-blue-800: 219 100% 14%;
+
+    /* Gråskala färger med nyanser från mycket ljus till mycket mörk */
+    --color-grey-50: 0 0% 98%;
+    --color-grey-100: 0 0% 93%;
+    --color-grey-200: 0 0% 88%;
+    --color-grey-300: 0 0% 75%;
+    --color-grey-400: 0 0% 70%;
+    --color-grey-500: 0 0% 65%;
+    --color-grey-600: 0 0% 55%;
+    --color-grey-700: 0 0% 45%;
+    --color-grey-800: 0 0% 35%;
+    --color-grey-900: 0 0% 25%;
+    --color-grey-950: 0 0% 5%;
+
+    /* Definierar vit och svart färg */
+    --color-white: 0 0% 100%;
+    --color-black: 0 0% 0%;
+
+    /* Primära färger i olika nyanser för ett färgschema */
+    --color-primary-50: 191 58% 96%;
+    --color-primary-100: 189 55% 90%;
+    --color-primary-200: 191 55% 82%;
+    --color-primary-300: 192 54% 66%;
+    --color-primary-400: 193 50% 53%;
+    --color-primary-500: 193 55% 43%;
+    --color-primary-600: 197 54% 36%;
+    --color-primary-700: 198 48% 31%;
+    --color-primary-800: 199 41% 27%;
+    --color-primary-900: 201 37% 24%;
+    --color-primary-950: 202 47% 15%;
+
+    /* Färgskalor för "farliga" element, såsom felmeddelanden */
+    --color-danger-50: 0 57% 97%;
+    --color-danger-200: 0 70% 89%;
+    --color-danger-100: 0 67% 94%;
+    --color-danger-300: 0 70% 82%;
+    --color-danger-400: 0 68% 71%;
+    --color-danger-500: 0 64% 60%;
+    --color-danger-600: 0 54% 51%;
+    --color-danger-700: 0 55% 43%;
+    --color-danger-800: 0 52% 35%;
+    --color-danger-900: 0 47% 31%;
+    --color-danger-950: 0 57% 15%;
+
+    /* Exempel på användning av färger för UI-element och texter */
+    --color-warning: var(--color-warning-500);
+    --color-primary: var(--color-primary-500);
+    --color-danger: var(--color-danger-500);
+    --color-elem-bg: var(--color-grey-100);
+    --color-elem-border: var(--color-grey-500);
+    --color-bg: var(--color-grey-50);
+    --color-text: var(--color-black);
+    --color-text-contrast: var(--color-white);
+    --color-text-low-contrast: var(--color-grey-800);
+  }
+
+  /* Dark Mode: Justerar färgerna för en mörkare tema */
+  :root[data-theme="dark"] {
+    --color-elem-bg: var(--color-grey-800); /* Mörk bakgrund för element */
+    --color-elem-border: var(--color-grey-500); /* Lättare gränser */
+    --color-bg: var(--color-grey-950); /* Mörk bakgrund för hela sidan */
+    --color-text: var(--color-white); /* Ljus text på mörk bakgrund */
+    --color-text-contrast: var(--color-black); /* Kontrastfärger för text */
+    --color-text-low-contrast: var(--color-grey-200); /* Mindre synlig text */
+
+    /* Primära färger för mörkt tema */
+    --color-primary-50: 191 58% 96%;
+    --color-primary-100: 189 55% 90%;
+    --color-primary-200: 191 55% 82%;
+    --color-primary-300: 192 54% 66%;
+    --color-primary-400: 193 50% 53%;
+    --color-primary-500: 193 55% 43%;
+    --color-primary-600: 197 54% 36%;
+    --color-primary-700: 198 48% 31%;
+    --color-primary-800: 199 41% 27%;
+    --color-primary-900: 201 37% 24%;
+    --color-primary-950: 202 47% 15%;
+  }
+}

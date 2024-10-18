@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--
+    Detta anger att dokumentet är ett HTML5-dokument.
+    "lang=en" specificerar att språket som används på sidan är engelska.
+  -->
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Anger teckenkodningen för dokumentet. UTF-8 är en vanlig teckenuppsättning
+      som stödjer nästan alla språk och symboler.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Gör sidan responsiv genom att sätta bredden på visningsfönstret (viewport)
+      till enhetens bredd och anger att 1 enhet av bredden på sidan motsvarar 1 enhet på skärmen.
+    -->
+    <title>E-wallet Card</title>
+    <!--
+      Titel för webbsidan. Det som visas i fliken i webbläsaren.
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Dessa två länkar optimerar laddningen av webbsidans typsnitt från Google Fonts.
+      Genom att använda "preconnect" hjälper det till att snabbare skapa en anslutning till Google Fonts-servrarna.
+      "crossorigin" tillåter delning av resurser mellan domäner, vilket behövs för att kunna ladda typsnitt på ett säkert sätt.
+    -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      Denna länk laddar in två typsnitt från Google Fonts: "Poppins" och "Share Tech Mono".
+      "Poppins" har olika viktningar (från 100 till 900), vilket betyder att du kan använda
+      både tunna och tjocka versioner av samma typsnitt. "Share Tech Mono" används i sin standardstil.
+      Dessa typsnitt kommer att användas för att styla texten på sidan.
+    -->
+  </head>
+
+  <body class="bg-bkg h-screen font-poppins">
+    <!--
+      body-elementet innehåller det visuella innehållet på sidan.
+      Klassen "bg-bkg" sätter bakgrundsfärgen (bakgrundsfärgen bestäms av din CSS).
+      "h-screen" gör att höjden på body är hela höjden av skärmen.
+      "font-poppins" tillämpar Poppins-typsnittet som standard för all text i body.
+    -->
+
+    <div id="root" class="h-full"></div>
+    <!--
+      Detta div-element med id "root" fungerar som ett "fäste" (mounting point) för React-applikationen.
+      React-applikationen kommer att renderas här. Allt innehåll genereras dynamiskt av JavaScript i detta div-element.
+      Klassen "h-full" gör att div:en sträcker sig över hela höjden av sidan.
+    -->
+
+    <script type="module" src="/src/main.jsx"></script>
+    <!--
+      Detta script inkluderar huvudfilen för din React-applikation (main.jsx).
+      "type='module'" betyder att JavaScript-filen hanteras som en modul, vilket innebär att den kan importera och exportera andra moduler.
+      "src" pekar på main.jsx, som är startpunkten för din React-applikation.
+    -->
+  </body>
+</html>
